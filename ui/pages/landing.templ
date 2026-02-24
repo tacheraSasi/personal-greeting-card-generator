@@ -5,6 +5,7 @@ import (
 	"templui/ui/layouts"
 	"templui/ui/components/input"
 	"templui/ui/components/label"
+	"templui/utils"
 )
 
 templ Landing() {
@@ -34,10 +35,9 @@ templ Landing() {
 				<div class="flex gap-3">
 					@button.Button(button.Props{
 						Variant: "default",
-						Href:    "https://templui.io/docs/how-to-use",
-						Target:  "_blank",
+						Class: utils.TwMerge("w-full"),
 					}) {
-						Documentation
+						Generate
 					}
 				</div>
 			</div>
