@@ -13,13 +13,14 @@ templ BaseLayout() {
 			<link href="/assets/css/output.css" rel="stylesheet"/>
 		</head>
 		<body class="h-full">
-			@input.Script()
-			@label.Script()
 			<div class="h-full flex flex-col">
 				<main class="flex-1">
 					{ children... }
 				</main>
 			</div>
 		</body>
+		@input.Script()
+		@label.Script()
+		<script src="/assets/js/main.js"></script>
 	</html>
 }
