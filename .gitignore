@@ -1,0 +1,7 @@
+.env
+assets/css/output.css
+*_templ.go
+
+node_modules/
+dist/
+build/
