@@ -5,10 +5,12 @@ import (
 	"net/http"
 	"os"
 
+	"templui/assets"
+	components "templui/ui/components/greetings-card"
+	"templui/ui/pages"
+
 	"github.com/a-h/templ"
 	"github.com/joho/godotenv"
-	"templui/assets"
-	"templui/ui/pages"
 )
 
 func main() {
@@ -16,6 +18,11 @@ func main() {
 	mux := http.NewServeMux()
 	SetupAssetsRoutes(mux)
 	mux.Handle("GET /", templ.Handler(pages.Landing()))
+	mux.Handle("POST /preview", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		name := r.FormValue("name")
+
+		components.GreetingCard(name).Render(r.Context(), w)
+	}))
 	fmt.Println("Server is running on http://localhost:8090")
 	http.ListenAndServe(":8090", mux)
 }

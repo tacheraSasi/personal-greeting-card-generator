@@ -1,49 +1,46 @@
 package components
 
-import "templui/ui/components/card"
-import "templui/ui/components/label"
-import "templui/ui/components/input"
-import "templui/ui/components/button"
+import (
+    "templui/ui/components/button"
+    "templui/ui/components/card"
+)
 
-templ GreetingsCard() {
-	<div class="w-full max-w-sm" id="greetings-card">
-		@card.Card() {
-			@card.Header() {
-				@card.Title() {
-					Create Project
-				}
-				@card.Description() {
-					Deploy your new project in one-click.
-				}
-			}
-			@card.Content() {
-				<div class="flex flex-col gap-4">
-					<div class="w-full max-w-sm grid gap-2">
-						@label.Label(label.Props{
-							For: "name",
-						}) {
-							Name
-						}
-						@input.Input(input.Props{
-							ID:          "name",
-							Placeholder: "Enter project name",
-						})
-					</div>
-					
-				</div>
-			}
-			@card.Footer(card.FooterProps{
-				Class: "flex justify-between",
-			}) {
-				@button.Button(button.Props{
-					Variant: button.VariantSecondary,
-				}) {
-					Cancel
-				}
-				@button.Button() {
-					Deploy
-				}
-			}
-		}
-	</div>
+templ GreetingCard(name string) {
+<div class="w-full max-w-sm mx-auto mt-8" id="greeting-card">
+    @card.Card() {
+    @card.Header() {
+    @card.Title() {
+    Your Greeting Card
+    }
+    @card.Description() {
+    Personalized just for fun!
+    }
+    }
+    @card.Content() {
+    <div class="space-y-6 text-center py-6">
+        if name != "" {
+        <h2 class="text-3xl font-bold text-primary">
+            Hello, { name }!
+        </h2>
+        <p class="text-xl text-muted-foreground">
+            Wishing you a wonderful day full of smiles 😊
+        </p>
+        } else {
+        <p class="text-lg text-muted-foreground italic">
+            Enter a name above to see your card come to life!
+        </p>
+        }
+    </div>
+    }
+    @card.Footer(card.FooterProps{
+    Class: "flex justify-center",
+    }) {
+    @button.Button(button.Props{
+    Type: "submit", // if used in form
+    }) {
+    Generate Greeting
+    }
+    }
+    }
+</div>
 }
