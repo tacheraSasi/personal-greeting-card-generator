@@ -1,7 +1,6 @@
 package components
 
 import (
-    "templui/ui/components/button"
     "templui/ui/components/card"
 )
 
@@ -33,15 +32,7 @@ templ GreetingCard(name string) {
                     }
                 </div>
                 }
-                @card.Footer(card.FooterProps{
-                    Class: "flex justify-center",
-                    }) {
-                        @button.Button(button.Props{
-                            Type: "submit", // if used in form
-                        }) {
-                            Generate Greeting
-                        }
-                }
+                
             }
         </div>
     }
