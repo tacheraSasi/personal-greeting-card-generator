@@ -1,0 +1,51 @@
+package showcase
+
+import "templui/ui/components/card"
+import "templui/ui/components/label"
+import "templui/ui/components/input"
+import "templui/ui/components/button"
+
+
+
+templ GreetingsCard(to string) {
+	<div class="w-full max-w-sm">
+		@card.Card() {
+			@card.Header() {
+				@card.Title() {
+					Create Project
+				}
+				@card.Description() {
+					Deploy your new project in one-click.
+				}
+			}
+			@card.Content() {
+				<div class="flex flex-col gap-4">
+					<div class="w-full max-w-sm grid gap-2">
+						@label.Label(label.Props{
+							For: "name",
+						}) {
+							Name
+						}
+						@input.Input(input.Props{
+							ID:          "name",
+							Placeholder: "Enter project name",
+						})
+					</div>
+					
+				</div>
+			}
+			@card.Footer(card.FooterProps{
+				Class: "flex justify-between",
+			}) {
+				@button.Button(button.Props{
+					Variant: button.VariantSecondary,
+				}) {
+					Cancel
+				}
+				@button.Button() {
+					Deploy
+				}
+			}
+		}
+	</div>
+}
