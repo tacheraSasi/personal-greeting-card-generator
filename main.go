@@ -19,6 +19,7 @@ func main() {
 	SetupAssetsRoutes(mux)
 	mux.Handle("GET /", templ.Handler(pages.Landing()))
 	mux.Handle("POST /preview", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Println("Received form submission")
 		name := r.FormValue("name")
 
 		components.GreetingCard(name).Render(r.Context(), w)

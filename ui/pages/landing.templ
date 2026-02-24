@@ -5,7 +5,7 @@ import (
 	"templui/ui/layouts"
 	"templui/ui/components/input"
 	"templui/ui/components/label"
-	"templui/utils"
+	"templui/ui/components/greetings-card"
 )
 
 templ Landing() {
@@ -20,26 +20,28 @@ templ Landing() {
 						Pretty dump
 					</p>
 				</div>
-				<div class="w-full max-w-sm grid gap-2">
-					@label.Label(label.Props{
-						For: "Name",
-					}) {
-						Name
-					}
-					@input.Input(input.Props{
-						ID: "Name",
-						Type: input.TypeText,
-						Placeholder: "YOUR NAME",
-					})
-				</div>
-				<div class="flex gap-3">
+				<form hx-post="/preview" hx-target="#main-div" hx-swap="innerHTML" class="space-y-6">
+					<div class="grid gap-2">
+						@label.Label(label.Props{For: "name"}) {
+							Who are we greeting today?
+						}
+						@input.Input(input.Props{
+							ID: "name",
+							Name: "name",
+							Placeholder: "Enter name here...",
+						})
+					</div>
+				
 					@button.Button(button.Props{
-						Variant: "default",
-						ID: "generateBtn",
-						Class: utils.TwMerge("w-full"),
+						Type: "submit",
+						Class: "w-full",
 					}) {
-						Generate
+						Show Greeting Card
 					}
+				</form>
+				<div id="preview-card" class="mt-10">
+					// initial empty state
+					@components.GreetingCard("") 
 				</div>
 			</div>
 		</div>

@@ -6,41 +6,43 @@ import (
 )
 
 templ GreetingCard(name string) {
-<div class="w-full max-w-sm mx-auto mt-8" id="greeting-card">
-    @card.Card() {
-    @card.Header() {
-    @card.Title() {
-    Your Greeting Card
+    if name != "" {
+        <div class="w-full max-w-sm mx-auto mt-8" id="greeting-card">
+            @card.Card() {
+                @card.Header() {
+                    @card.Title() {
+                        Your Greeting Card
+                    }
+                    @card.Description() {
+                        Personalized just for fun!
+                    }
+                }
+                @card.Content() {
+                <div class="space-y-6 text-center py-6">
+                    if name != "" {
+                    <h2 class="text-3xl font-bold text-primary">
+                        Hello, { name }!
+                    </h2>
+                    <p class="text-xl text-muted-foreground">
+                        Wishing you a wonderful day full of smiles 😊
+                    </p>
+                    } else {
+                    <p class="text-lg text-muted-foreground italic">
+                        Enter a name above to see your card come to life!
+                    </p>
+                    }
+                </div>
+                }
+                @card.Footer(card.FooterProps{
+                    Class: "flex justify-center",
+                    }) {
+                        @button.Button(button.Props{
+                            Type: "submit", // if used in form
+                        }) {
+                            Generate Greeting
+                        }
+                }
+            }
+        </div>
     }
-    @card.Description() {
-    Personalized just for fun!
-    }
-    }
-    @card.Content() {
-    <div class="space-y-6 text-center py-6">
-        if name != "" {
-        <h2 class="text-3xl font-bold text-primary">
-            Hello, { name }!
-        </h2>
-        <p class="text-xl text-muted-foreground">
-            Wishing you a wonderful day full of smiles 😊
-        </p>
-        } else {
-        <p class="text-lg text-muted-foreground italic">
-            Enter a name above to see your card come to life!
-        </p>
-        }
-    </div>
-    }
-    @card.Footer(card.FooterProps{
-    Class: "flex justify-center",
-    }) {
-    @button.Button(button.Props{
-    Type: "submit", // if used in form
-    }) {
-    Generate Greeting
-    }
-    }
-    }
-</div>
 }
