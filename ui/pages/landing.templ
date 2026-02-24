@@ -3,19 +3,33 @@ package pages
 import (
 	"templui/ui/components/button"
 	"templui/ui/layouts"
+	"templui/ui/components/input"
+	"templui/ui/components/label"
 )
 
 templ Landing() {
 	@layouts.BaseLayout() {
-		<div class="h-full flex justify-center items-center">
-			<div class="flex flex-col gap-4 items-center justify-center px-4 w-full max-w-2xl">
+		<div class="h-full flex justify-center items-center ">
+			<div class="flex flex-col gap-4 items-center justify-center p-8 w-full max-w-2xl border-2 border-white/50 rounded-lg bg-white/5 p-6">
 				<div class="text-center space-y-4">
-					<h1 class="text-5xl font-bold tracking-tight">templUI Quickstart</h1>
+					<h1 class="text-5xl font-bold tracking-tight">Personal Greeting Card Generator</h1>
 					<p class="text-muted-foreground text-lg max-w-md mx-auto">
-						Build modern web applications with
+						Yeah yeah,
 						<br/>
-						Go, templ, and Tailwind CSS.
+						Pretty dump
 					</p>
+				</div>
+				<div class="w-full max-w-sm grid gap-2">
+					@label.Label(label.Props{
+					For: "Name",
+					}) {
+					Name
+					}
+					@input.Input(input.Props{
+					ID: "Name",
+					Type: input.TypeText,
+					Placeholder: "YOUR NAME",
+					})
 				</div>
 				<div class="flex gap-3">
 					@button.Button(button.Props{
@@ -25,17 +39,7 @@ templ Landing() {
 					}) {
 						Documentation
 					}
-					@button.Button(button.Props{
-						Variant: "outline",
-						Href:    "https://github.com/templui/templui",
-						Target:  "_blank",
-					}) {
-						GitHub
-					}
 				</div>
-				<p class="text-sm text-muted-foreground">
-					<a href="https://github.com/templui/templui/discussions" target="_blank" class="text-primary hover:opacity-80 underline underline-offset-4">Join the community</a>
-				</p>
 			</div>
 		</div>
 	}
