@@ -6,12 +6,13 @@ import (
 	"templui/ui/components/input"
 	"templui/ui/components/label"
 	"templui/utils"
+	"templui/ui/components/greetings-card"
 )
 
 templ Landing() {
 	@layouts.BaseLayout() {
-		<div class="h-full flex justify-center items-center ">
-			<div class="flex flex-col gap-4 items-center justify-center p-8 w-full max-w-2xl border-2 border-white/50 rounded-lg bg-white/5 p-6">
+		<div class="h-full flex justify-center items-center flex-col gap-6">
+			<div id="main-div" class="flex flex-col gap-4 items-center justify-center p-8 w-full max-w-2xl border-2 border-white/50 rounded-lg bg-white/5 p-6">
 				<div class="text-center space-y-4">
 					<h1 class="text-5xl font-bold tracking-tight">Personal Greeting Card Generator</h1>
 					<p class="text-muted-foreground text-lg max-w-md mx-auto">
@@ -42,6 +43,7 @@ templ Landing() {
 					}
 				</div>
 			</div>
+			@components.GreetingsCard()
 		</div>
 	}
 }

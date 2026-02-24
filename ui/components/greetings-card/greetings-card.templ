@@ -1,14 +1,12 @@
-package showcase
+package components
 
 import "templui/ui/components/card"
 import "templui/ui/components/label"
 import "templui/ui/components/input"
 import "templui/ui/components/button"
 
-
-
-templ GreetingsCard(to string) {
-	<div class="w-full max-w-sm">
+templ GreetingsCard() {
+	<div class="w-full max-w-sm" id="greetings-card">
 		@card.Card() {
 			@card.Header() {
 				@card.Title() {
